@@ -100,3 +100,108 @@ def update(frame):
     ydata.append(np.sin(frame))
     ln.set_data(xdata, ydata)
     return ln,
+
+!pip install openpyxl
+!pip install xlrd
+
+
+from pylab import rcParams
+rcParams['figure.figsize'] = 30,20
+%matplotlib notebook
+%matplotlib inline
+import datetime as datetime
+import pandas_datareader
+import matplotlib.pyplot as plt
+
+from IPython.display import display_pdf
+filename = "001391189.pdf"
+filename1 = "001391194.pdf"
+with open(filename,"rb") as f:
+    display_pdf(f.read(),raw=True)
+with open(filename1,"rb") as f1:
+    display_pdf(f1.read(),raw=True)
+    
+import xlrd
+from IPython.display import HTML
+import pandas as pd
+import pandas_datareader
+
+
+df= pd.read_excel("001333778.xls",header=None)
+df0= pd.read_excel("001391293.xls",header=None)
+df1= pd.read_excel("001391295.xls",header=None)
+df2= pd.read_excel("001391296.xls",header=None)
+
+#lenでシートの総数を確認
+
+
+num_sheet = len(df)
+
+ 
+
+#シートの数とシートの名前のリストの表示
+
+
+print ("Sheet の数:", num_sheet)
+
+print("Sheet name:", df[0])
+
+ 
+
+#読み込んだシートの先頭10行を表示
+
+
+df.head(10) 
+
+total_df= pd.read_excel("001391725.xls")
+
+print(df1)
+
+import csv
+tokyo = pd.read_csv('tokyo.csv', encoding="SHIFT_JIS",header=None)
+
+
+
+tokyo=tokyo.T
+
+print(tokyo)
+
+
+
+print(tokyo_avarage)
+years = tokyo[0]
+print(years)
+
+
+date = years.index
+price = tokyo_avarage
+plt.figure(figsize=(22, 18), dpi=50)
+plt.plot(date,price)
+
+date = years.index
+price = tokyo[3]
+plt.figure(figsize=(22, 18), dpi=50)
+plt.plot(date,price)
+
+date = years.index
+price = tokyo[2]
+plt.figure(figsize=(22, 18), dpi=50)
+plt.plot(date,price)
+
+date = years.index
+price = tokyo[1]
+plt.figure(figsize=(22, 18), dpi=50)
+plt.plot(date,price)
+
+print(df2)
+
+tokyo_itabashi = pd.read_csv('tokyo-itabashi.csv', encoding="SHIFT_JIS",header=None)
+tokyo_itabashi.T
+
+df0 = df0['Unnamed: 3']
+df0.plot(title='東京圏の市区の住宅地の平均価格等', grid=True)
+plt.show()
+df1.plot(title='東京圏の地域別対前年平均変動率', grid=True)
+plt.show()
+df2.plot(title='東京圏の市区の対前年平均変動率', grid=True)
+plt.show()
